@@ -1,0 +1,43 @@
+###########################
+# потоковое чтение из файлов построчно
+
+    # count_files=0
+    # count_recor=0
+    # text=""
+    # for file in $(find ../04/logs/* -name "*"); do # проходка по всем файлам
+    #     while IFS= read -r line; do
+    #         if [[ ! -z $line ]]; then
+    #             # echo "$line"
+    #             ((count_recor++))                
+    #             if (( count_recor==1 )); then
+    #                 text="${line}" 
+    #             elif (( count_recor<=MAX_LINES )); then
+    #                 text="${text}\n${line}" ; fi
+                
+    #             if (( count_recor==MAX_LINES )); then
+    #                 output="result_query_"$1"_$(date +"%Y-%m-%d-%H-%M-%S").log"
+    #                 echo -e "${LYELLOW}Записей уже "$count_recor"." \
+    #                 "Можно все записи сохранить в выходном файле."
+    #                 echo -e "Сохранить в файл '$output'? [y/n]:${DEF}"
+    #                 read choice </dev/tty  # Явно указываем, что нужно читать с клавиатуры
+    #                 if [[ "${choice,,}" == "y" || "${choice,,}" == "yes" ]]; then
+    #                     echo -e "$text" >> $output
+    #                     choice="true"
+    #                 else 
+    #                    choice="false"
+    #                    echo -e "$text"
+    #                 fi
+    #             fi
+    #             if (( count_recor>MAX_LINES )); then
+    #                if [ "${choice}" = "false" ]; then echo -e "$line"
+    #                else echo -e "$line" >> $output; fi
+    #             fi 
+    #         fi
+    #     done < $file
+    #     ((count_files++))
+    # done
+    # if (( count_files == 0 )); then
+    #     echo -e $LRED"Файлов в ../04/logs/ не найдено!"$DEF
+    # else 
+    #     echo -e $LGREEN"Число файлов: "$count_files", общее число записей в них: "$count_recor $DEF
+    # fi
